@@ -40,9 +40,10 @@ func main() {
 	is_prime[2] = true
 	is_prime[3] = true
 
+	primes := []int{}
 	for x = 0; x < len(is_prime)-1; x++ {
 		if is_prime[x] {
-			fmt.Println(x)
+			primes = append(primes, x)
 		}
 	}
 }

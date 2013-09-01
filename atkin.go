@@ -1,12 +1,11 @@
 package main
 
-import "fmt"
 import "math"
 
-const N = 2000000
+const N = 100000000
 
 func main() {
-	var n, x, y int
+	var x, y, n int
 	nsqrt := math.Sqrt(N)
 
 	is_prime := [N]bool{}
@@ -30,8 +29,7 @@ func main() {
 
 	for n = 5; float64(n) <= nsqrt; n++ {
 		if is_prime[n] {
-			x = n*n
-			for y = x; y < N; y += x {
+			for y = n*n; y < N; y += n*n {
 				is_prime[y] = false
 			}
 		}

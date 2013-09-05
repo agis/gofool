@@ -2,7 +2,7 @@ package main
 
 import "math"
 
-const N = 100000000
+const N = 20000000
 
 func main() {
 	var x, y, n int
@@ -38,7 +38,7 @@ func main() {
 	is_prime[2] = true
 	is_prime[3] = true
 
-	primes := []int{}
+	primes := make([]int, 0, 1270606)
 	for x = 0; x < len(is_prime)-1; x++ {
 		if is_prime[x] {
 			primes = append(primes, x)

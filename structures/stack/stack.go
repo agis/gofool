@@ -6,11 +6,11 @@ type Stack struct {
 }
 
 type Node struct {
-	value int
+	value float64
 	next *Node
 }
 
-func (s *Stack) Push(data int) {
+func (s *Stack) Push(data float64) {
 	newNode := &Node{data, nil}
 
 	if s.head != nil {
@@ -21,7 +21,7 @@ func (s *Stack) Push(data int) {
 	s.Length++
 }
 
-func (s *Stack) Pop() int {
+func (s *Stack) Pop() float64 {
 	if s.Length <= 0 {
 		panic("stack is empty")
 	}

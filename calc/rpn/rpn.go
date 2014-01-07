@@ -9,16 +9,16 @@ import (
 )
 
 func Eval(exp string) float64 {
-	re1, _ := regexp.Compile(`^\d+(\.\d+)?$`)
-	re2, _ := regexp.Compile(`\+|-|\*|/`)
+	reOperand, _ := regexp.Compile(`^\d+(\.\d+)?$`)
+	reOperator, _ := regexp.Compile(`\+|-|\*|/`)
 
 	stack := new(stack.Stack)
 
 	for _, tok := range strings.Fields(exp) {
-		if re1.MatchString(tok) {
+		if reOperand.MatchString(tok) {
 			tok, _ := strconv.ParseFloat(tok, 64)
 			stack.Push(tok)
-		} else if re2.MatchString(tok) {
+		} else if reOperator.MatchString(tok) {
 			if stack.Length < 2 {
 				log.Fatal("Error: Insufficient values for expression")
 			}
@@ -26,13 +26,14 @@ func Eval(exp string) float64 {
 			a := stack.Pop()
 			b := stack.Pop()
 
-			if tok == "+" {
+			switch tok {
+			case "+":
 				stack.Push(a + b)
-			} else if tok == "-" {
+			case "-":
 				stack.Push(a - b)
-			} else if tok == "*" {
+			case "*":
 				stack.Push(a * b)
-			} else if tok == "/" {
+			case "/":
 				stack.Push(a / b)
 			}
 		} else {

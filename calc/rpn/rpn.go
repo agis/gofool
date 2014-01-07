@@ -1,3 +1,5 @@
+// A dead-simple RPN calculator supporting addition, subtraction,
+// multiplication & division.
 package rpn
 
 import (
@@ -8,6 +10,8 @@ import (
 	"log"
 )
 
+// Evaluates the given expression provided as a string and returns the result
+// as a float.
 func Eval(exp string) float64 {
 	reOperand, _ := regexp.Compile(`^\d+(\.\d+)?$`)
 	reOperator, _ := regexp.Compile(`\+|-|\*|/`)

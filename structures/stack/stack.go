@@ -6,11 +6,11 @@ type Stack struct {
 }
 
 type Node struct {
-	value float64
+	value interface{}
 	next *Node
 }
 
-func (s *Stack) Push(data float64) {
+func (s *Stack) Push(data interface{}) {
 	newNode := &Node{data, nil}
 
 	if s.head != nil {
@@ -21,7 +21,7 @@ func (s *Stack) Push(data float64) {
 	s.Length++
 }
 
-func (s *Stack) Pop() float64 {
+func (s *Stack) Pop() interface{} {
 	if s.Length <= 0 {
 		panic("stack is empty")
 	}

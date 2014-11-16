@@ -16,10 +16,10 @@ const (
 )
 
 var (
-  keywords = map[string]bool{
-    "if": true,
-    "else": true,
-  }
+	keywords = map[string]bool{
+		"if":   true,
+		"else": true,
+	}
 )
 
 type Token struct {
@@ -94,14 +94,14 @@ func Scan(input string) []Token {
 			}
 		case 10:
 			i--
-      if keywords[input[pos:i]] {
-        t = append(t, Token{IF, input[pos:i]})
-      } else {
-        t = append(t, Token{ID, input[pos:i]})
-      }
+			if keywords[input[pos:i]] {
+				t = append(t, Token{IF, input[pos:i]})
+			} else {
+				t = append(t, Token{ID, input[pos:i]})
+			}
 			state = 0
 		}
 	}
 
-  return t
+	return t
 }

@@ -10,7 +10,6 @@ import "os"
 import "sync"
 
 // Reads newline-separated URLs from stdin and computes their SHA1 checksum.
-//
 func main() {
 	client := new(http.Client)
 	wg := new(sync.WaitGroup)
